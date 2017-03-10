@@ -1,3 +1,4 @@
+import { DataService } from './data.service';
 import { LogService } from './log.service';
 import { Component } from '@angular/core';
 
@@ -32,19 +33,20 @@ export class CmpAComponent {
     }
 
     onStore(value: string) {
-
+        this.dataService.addData(value);
     }
 
     onGet() {
-
+        this.items = this.dataService.getData().slice(0);
     }
 
     onSend(value: string) {
 
     }
 
-    constructor(private logService: LogService){
+    constructor(private logService: LogService, private dataService: DataService){
 
     }
 
 }
+
