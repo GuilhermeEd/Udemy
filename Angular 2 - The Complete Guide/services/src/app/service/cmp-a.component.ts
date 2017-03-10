@@ -1,5 +1,5 @@
-import { DataService } from './data.service';
 import { LogService } from './log.service';
+import { DataService } from './data.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -21,8 +21,7 @@ import { Component } from '@angular/core';
         <h3>Received Value</h3>
         <p>{{value}}</p>
     </div>
-  `,
-  providers: [LogService]
+  `
 })
 export class CmpAComponent {
     value = '';

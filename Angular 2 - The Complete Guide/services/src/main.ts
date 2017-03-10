@@ -1,3 +1,4 @@
+import { LogService } from './app/service/log.service';
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 

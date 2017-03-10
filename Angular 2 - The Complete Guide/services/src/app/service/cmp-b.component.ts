@@ -1,6 +1,6 @@
 import { DataService } from './data.service';
-import { LogService } from './log.service';
 import { Component } from '@angular/core';
+import { LogService } from './log.service';
 
 @Component({
     selector: 'si-cmp-b',
@@ -20,8 +20,7 @@ import { Component } from '@angular/core';
         <h3>Received Value</h3>
         <p>{{value}}</p>
     </div>
-  `,
-  providers: [LogService]
+  `
 })
 export class CmpBComponent {
    value = '';
