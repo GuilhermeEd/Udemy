@@ -1,3 +1,4 @@
+import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -26,6 +27,7 @@ import { DropdownDirective } from './dropdown.directive';
   imports: [
     BrowserModule
   ],
-  bootstrap: [RecipeBookAppComponent]
+  bootstrap: [RecipeBookAppComponent],
+  providers: [ShoppingListService]
 })
 export class AppModule {}
