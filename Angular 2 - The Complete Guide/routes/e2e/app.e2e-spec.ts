@@ -1,10 +1,10 @@
-import { RoutesPage } from './app.po';
+import { NewCliPage } from './app.po';
 
-describe('routes App', () => {
-  let page: RoutesPage;
+describe('new-cli App', () => {
+  let page: NewCliPage;
 
   beforeEach(() => {
-    page = new RoutesPage();
+    page = new NewCliPage();
   });
 
   it('should display message saying app works', () => {
