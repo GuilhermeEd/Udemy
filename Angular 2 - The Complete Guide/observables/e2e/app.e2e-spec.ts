@@ -1,10 +1,10 @@
-import { ObservablesPage } from './app.po';
+import { NewCliPage } from './app.po';
 
-describe('observables App', () => {
-  let page: ObservablesPage;
+describe('new-cli App', () => {
+  let page: NewCliPage;
 
   beforeEach(() => {
-    page = new ObservablesPage();
+    page = new NewCliPage();
   });
 
   it('should display message saying app works', () => {
