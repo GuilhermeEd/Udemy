@@ -1,13 +1,9 @@
 <template>
   <div class="col-xs-12 col-sm-6">
         <ul class="list-group">
-            <li
-                class="list-group-item"
-                v-for="server in servers"
-                :key="server.id"
-                style="cursor: pointer;"
-                @click="serverSelected(server)">
-                Server #{{ server.id }}
+            <li v-for="server in servers"
+                :key="server.id">
+                <app-server :server="server"/>
             </li>
         </ul>
     </div>
@@ -15,6 +11,7 @@
 <script>
 import { servers } from '../data/servers';
 import { eventBus } from '../main';
+import Server from './Server.vue';
 
 export default {
     data(){
@@ -29,7 +26,14 @@ export default {
     },
     created(){
         console.log(servers);
+    },
+    components: {
+        appServer: Server
     }
 }
 </script>
-
+<style scoped>
+    li {
+        list-style-type: none;
+    }
+</style>
