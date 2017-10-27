@@ -7,32 +7,27 @@
                     <!-- Create a Signup Form where you retrieve the following Information -->
                     <form v-if="!formWasSubmitted" style="padding-top: 15px;">
                         <!-- Full Name (First Name + Last Name) -->
-                        <div class="form-group">
-                            <label for="firstName">First Name:</label>
-                            <input name="firstName" id="firstName" type="text" class="form-control">
-                            <label for="lastName">Last Name:</label>
-                            <input name="lastName" id="lastName" type="text" class="form-control">
-                        </div>
+                        <app-full-name v-model="fullName"></app-full-name>
                         <!-- Mail -->
                         <div class="form-group">
                             <label for="email">Email:</label>
-                            <input name="email" id="email" type="email" class="form-control">
+                            <input v-model="email" name="email" id="email" type="email" class="form-control">
                         </div>
                         <!-- Password -->
                         <div class="form-group">
                             <label for="password">Password:</label>
-                            <input name="password" id="password" type="password" class="form-control">
+                            <input v-model="password" name="password" id="password" type="password" class="form-control">
                         </div>
                         <!-- Store Data? Yes/No -->
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input type="radio" class="form-check-input">
+                                <input v-model="storeData" value="Yes" type="radio" class="form-check-input">
                                 Yes
                             </label>
                         </div>
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input type="radio" class="form-check-input">
+                                <input v-model="storeData" value="No" type="radio" class="form-check-input">
                                 No
                             </label>
                         </div>
@@ -56,10 +51,10 @@
                         <h4>Your Data</h4>
                     </div>
                     <div class="panel-body">
-                        <p>Full Name: </p>
-                        <p>Mail: </p>
-                        <p>Password: </p>
-                        <p>Store in Database?: </p>
+                        <p>Full Name: {{fullName}}</p>
+                        <p>Mail: {{email}}</p>
+                        <p>Password: {{password}}</p>
+                        <p>Store in Database?: {{storeData}}</p>
                     </div>
                 </div>
             </div>
@@ -68,14 +63,25 @@
     <!-- Exercise 3 -->
     <!-- Edit the Example from above and create a custom "Full Name" Control -->
     <!-- which still holds the First Name and Last Name Input Field -->
+
+    <!-- Solution: See FullName.vue component -->
 </template>
 
 <script>
+import FullName from './FullName.vue';
+
     export default {
         data(){
             return{
+                fullName: 'Guilherme Eduardo',
+                email: '',
+                password: '',
+                storeData: 'Yes',
                 formWasSubmitted: false
             }
+        },
+        components: {
+            appFullName: FullName
         }
     }
 </script>
