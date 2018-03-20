@@ -72,17 +72,17 @@ UserSchema.statics.findByToken = function (token) {
 UserSchema.statics.findByCredentials = function (email, password) {
   var User = this;
 
-  User.findOne({email}).then((user) => {
+  return User.findOne({email}).then((user) => {
     if (!user) {
       return Promise.reject();
     }
 
-    return new Promise((res, rej) => {
+    return new Promise((resolve, reject) => {
       bcrypt.compare(password, user.password, (err, res) => {
         if (res) {
-          res(user);
+          resolve(user);
         } else {
-          rej(err);
+          reject(err);
         }
       });
     });
