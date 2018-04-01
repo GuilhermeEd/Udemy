@@ -36,41 +36,47 @@ const getUser = (id) => {
 
 const getGrades = (schoolId) => {
   return new Promise((resolve, reject) => {
-    resolve(grades.filter( grade => grade.schoolId === schoolId));
-  })
-};
-
-const getStatus = (userId) => {
-  var user;
-  return getUser(userId).then( tempUser => {
-    user = tempUser;
-    return getGrades(user.schoolId);
-  }).then( grades => {
-    let average = 0;
-
-    if (grades.length > 0) {
-      average = grades.map( grade => grade.grade ).reduce((a, b) => a + b) / grades.length;
-    }
-
-    return `${user.name} has a ${average}% in the class.`;
-    console.log(average);
+    resolve(grades.filter((grade) => grade.schoolId === schoolId));
   });
 };
 
-getUser(21).then((user) => {
-  console.log(user);
-}).catch((err) => {
-  console.log(err);
-});
+// Andrew has a 83% in the class
+const getStatus = (userId) => {
+  let user;
+  return getUser(userId).then((tempUser) => {
+    user = tempUser;
+    return getGrades(user.schoolId);
+  }).then((grades) => {
+    let average = 0;
 
-getGrades(101).then((grades) => {
-  console.log(grades);
-}).catch((err) => {
-  console.log(err);
-});
+    if (grades.length > 0) {
+      average = grades.map((grade) => grade.grade).reduce((a, b) => a + b) / grades.length;
+    }
 
-getStatus(2).then((status) => {
+    return `${user.name} has a ${average}% in the class.`;
+  });
+};
+
+const getStatusAlt = async (userId) => {
+  const user = await getUser(userId);
+  const grades = await getGrades(user.schoolId);
+  let average = 0;
+
+  if (grades.length > 0) {
+    average = grades.map((grade) => grade.grade).reduce((a, b) => a + b) / grades.length;
+  }
+
+  return `${user.name} has a ${average}% in the class.`;
+};
+
+getStatusAlt(2).then((status) => {
   console.log(status);
-}).catch((err) => {
-  console.log(err);
+}).catch((e) => {
+  console.log(e);
 });
+
+// getStatus(123).then((status) => {
+//   console.log(status);
+// }).catch((e) => {
+//   console.log(e);
+// });
